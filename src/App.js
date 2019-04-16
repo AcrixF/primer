@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 
 
-const message = "This is a constant";
-const count = 4;
+//const message = "This is a constant";
+//const count = 4;
 
 class App extends Component {
     constructor(props) {
@@ -15,11 +15,10 @@ class App extends Component {
 
     isEven = (val) => val % 2 === 0 ? "Even" : "Odd";
 
-    //  Expresions to set Prop Values.
+    //  Expresion to set Prop Values.
     getClassName = (val) => val % 2 === 0 ? "bg-primary text-white text-center p-2 m-1" : "bg-secondary text-white text-center p-2 m-1";
 
-    // Expressions to Handle Events.
-
+    // Expresion to Handle Events.
     handleClick = () => this.setState({count: this.state.count + 1 } );
 
     render = () =>  <div className="container-fluid p-4">
