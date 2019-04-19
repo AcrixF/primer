@@ -1,3 +1,8 @@
+import additionFunction from './sum';
+import { summOdd, sumValues } from './sum';
+import { multiply, substract as deduct } from "./operations";
+import { asyncAdd, asyncPromiseAdd } from './async';
+
 /*
 console.log("Hello");
 console.log("Apples");
@@ -206,3 +211,103 @@ let myData__ = {
 
 myData__.printMessages();
 
+console.log('-------------------- Using Classes for Objects ------------------------');
+
+
+class MyData{
+    constructor(){
+        this.name = "Adam";
+        this.weather = "Sunny";
+    }
+
+    printMessage = () => {
+        console.log(`Hello ${this.name}`);
+        console.log(`Today is ${this.weather}.`);
+    }
+}
+
+let myDataObject = new MyData();
+
+myDataObject.printMessage();
+
+//  JavaScript provides the Object.assign method for copying the properties from one object to another.
+console.log('----------------- Using assign for copying the properties from one object to other --------------------------')
+
+let secondObject = {};
+
+Object.assign(secondObject, myDataObject);
+
+secondObject.printMessage();
+
+console.log('----------------- Destructuring operator fro creating new Object --------------------------');
+
+let secondObjectDestructuring = {...myDataObject, weather:"Raining"};
+
+secondObjectDestructuring.printMessage();
+
+console.log(`myData: ${ myDataObject.weather}, secondObject: ${secondObjectDestructuring.weather}`);
+
+// Navigating Object Properties
+
+console.log('------------------------------ Navigating Object Properties ----------------------------------');
+
+const navigationObject = {
+    name:'Bob',
+    location: {
+        city: 'Paris',
+        country: 'France'
+    },
+    employment: {
+        title: 'Manager',
+        dept: 'Sales'
+    }
+};
+
+function printDetails( data ) {
+    console.log(`Name: ${data.name}, City: ${ data.location.city }, Role: ${ data.employment.title }.`);
+}
+
+printDetails( navigationObject );
+
+console.log('--------------------------- Capturing Named Parameters ---------------------------------------');
+
+function printDetailsNamedParameters( {name, location: { city }, employment: { title } } ) {
+    console.log(`Name: ${name}, City: ${city}, Role: ${title}`);
+}
+
+printDetailsNamedParameters( navigationObject );
+
+
+console.log('--------------------------- Javascript Default Modules   ---------------------------------------');
+
+let values = [10, 20, 30, 40, 50];
+let total = additionFunction( values );
+
+console.log(`Total: ${ total }`);
+
+console.log('--------------------------- Javascript Named Modules ---------------------------------------');
+
+let totalNamed = sumValues( values );
+console.log(`Total Named values: ${ totalNamed }`);
+
+let odd = summOdd(values);
+
+console.log(`Total: ${totalNamed}, Odd Total: ${odd}`)
+
+console.log('--------------------------- Importing multiple Named Modules ---------------------------------------');
+
+console.log(`Multiply: ${multiply(values)}`);
+
+console.log('-------------------------- Importing Named Functions with Alias ------------------------------------');
+
+console.log(`Substract: ${deduct(1000, values ) }`);
+
+console.log('-------------------------- Async Functions  ------------------------------------');
+
+let totalAsync = asyncAdd( values );
+
+console.log(`Main Total: ${totalAsync}`);
+
+console.log('-------------------------- Async Functions with Promises  ------------------------------------');
+
+asyncPromiseAdd(values).then( total => console.log(`Main Total: ${ total }`) );
